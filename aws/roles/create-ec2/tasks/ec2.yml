@@ -1,0 +1,44 @@
+---
+- name: Creating North Virginia Server Availability Zone A
+  ec2_instance:
+    name: "AZONE-NGINX-SERVER"
+    region: us-east-1
+    key_name: ansible-key
+    vpc_subnet_id: subnet-b25b16ee
+    instance_type: t2.micro
+    security_group: nginx-secgroup
+    aws_access_key: "{{ access_key }}"
+    aws_secret_key: "{{ secret_key }}"
+    volumes:
+      - device_name: /dev/sda1
+        ebs:
+          volume_size: 10
+          delete_on_termination: true
+    network:
+      assign_public_ip: true
+    user_data: "{{ lookup('file', 'user_dataa.sh') }}"
+    image_id: ami-0c322300a1dd5dc79
+    tags:
+      Environment: Nginx
+
+- name: Creating North Virginia Server Availability Zone B
+  ec2_instance:
+    name: "BZONE-NGINX-SERVER"
+    region: us-east-1
+    key_name: ansible-key
+    vpc_subnet_id: subnet-c92565ae
+    instance_type: t2.micro
+    security_group: nginx-secgroup
+    aws_access_key: "{{ access_key }}"
+    aws_secret_key: "{{ secret_key }}"
+    volumes:
+      - device_name: /dev/sda1
+        ebs:
+          volume_size: 10
+          delete_on_termination: true
+    network:
+      assign_public_ip: true
+    user_data: "{{ lookup('file', 'user_datab.sh') }}"
+    image_id: ami-0c322300a1dd5dc79
+    tags:
+      Environment: Nginx

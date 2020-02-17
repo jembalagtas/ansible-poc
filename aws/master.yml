@@ -1,0 +1,8 @@
+---
+- name: Deploy AWS Infrastructure Resources
+  hosts: localhost
+  become_user: root
+  become: true
+  roles:
+    - create-ec2
+  

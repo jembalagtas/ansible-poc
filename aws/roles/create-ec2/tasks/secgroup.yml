@@ -1,0 +1,40 @@
+---
+- name: Create NGINX Security Group
+  ec2_group:
+    name: nginx-secgroup
+    description: nginx az a & b security group
+    vpc_id: vpc-6d34a917
+    region: us-east-1
+    aws_access_key: "{{ access_key }}"
+    aws_secret_key: "{{ secret_key }}"
+    rules:
+      - proto: tcp
+        from_port: 80
+        to_port: 80
+        cidr_ip: 0.0.0.0/0
+      - proto: tcp
+        from_port: 22
+        to_port: 22
+        cidr_ip: 0.0.0.0/0
+      - proto: tcp
+        from_port: 443
+        to_port: 443
+        cidr_ip: 0.0.0.0/0
+    
+- name: Create Load Balancer Security Group
+  ec2_group:
+    name: lb-secgroup
+    description: nginx lb security group
+    vpc_id: vpc-6d34a917
+    region: us-east-1
+    aws_access_key: "{{ access_key }}"
+    aws_secret_key: "{{ secret_key }}"
+    rules:
+      - proto: tcp
+        from_port: 80
+        to_port: 80
+        cidr_ip: 0.0.0.0/0
+      - proto: tcp
+        from_port: 443
+        to_port: 443
+        cidr_ip: 0.0.0.0/0

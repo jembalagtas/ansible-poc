@@ -1,0 +1,4 @@
+---
+- include_tasks: secgroup.yml
+- include_tasks: ec2.yml
+- include_tasks: loadbalancer.yml
