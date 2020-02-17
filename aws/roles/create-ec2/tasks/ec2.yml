@@ -73,6 +73,7 @@
     zones:
       - us-east-1a
       - us-east-1b
+    cross_az_load_balancing: "yes"
     listeners:
       - protocol: tcp
         load_balancer_port: 80
