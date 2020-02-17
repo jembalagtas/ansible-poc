@@ -66,6 +66,7 @@
   ec2_elb_lb:
     name: nginx-load-balancer
     state: present
+    security_group_names: lb-secgroup
     region: us-east-1
     zones:
       - us-east-1a
