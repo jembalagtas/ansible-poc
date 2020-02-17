@@ -78,6 +78,13 @@
       - protocol: tcp
         load_balancer_port: 80
         instance_port: 80
+    health_check:
+      ping_protocol: tcp
+      ping_port: 80
+      response_timeout: 5
+      interval: 10
+      unhealthy_threshold: 10
+      healthy_threshold: 3
   register: elb
 
 - name: Register Servers on the Load Balancer
