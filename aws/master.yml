@@ -1,6 +1,7 @@
 ---
 - name: Deploy AWS Infrastructure Resources
   hosts: localhost
+  connection: local
   become_user: root
   become: true
   roles:

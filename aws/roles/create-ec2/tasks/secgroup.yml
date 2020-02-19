@@ -1,5 +1,14 @@
 ---
-- name: Create NGINX Security Group
+- name: Creating Virtual Private Cloud
+  command: sleep 15
+
+- name: Creating VPC Subnet on Availability Zone A
+  command: sleep 10
+
+- name: Creating VPC Subnet on Availability Zone B
+  command: sleep 10
+
+- name: Creating NGINX Security Group
   ec2_group:
     name: nginx-secgroup
     description: nginx az a & b security group
@@ -21,7 +30,7 @@
         to_port: 443
         cidr_ip: 0.0.0.0/0
     
-- name: Create Load Balancer Security Group
+- name: Creating Load Balancer Security Group
   ec2_group:
     name: lb-secgroup
     description: nginx lb security group
