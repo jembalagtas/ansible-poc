@@ -2,9 +2,9 @@
 - name: Creating North Virginia Server Availability Zone A
   ec2_instance:
     name: "AZONE-NGINX-SERVER"
-    region: us-east-1
+    region: ap-southeast-1
     key_name: ansible-key
-    vpc_subnet_id: subnet-05fec8c549f16fc3e
+    vpc_subnet_id: subnet-d652a8b0
     instance_type: t2.micro
     security_group: nginx-secgroup
     aws_access_key: "{{ access_key }}"
@@ -17,7 +17,7 @@
     network:
       assign_public_ip: true
     user_data: "{{ lookup('file', 'user_dataa.sh') }}"
-    image_id: ami-098f16afa9edf40be
+    image_id: ami-02b6d9703a69265e9
     tags:
       Environment: Nginx
   register: ec2_a
@@ -25,9 +25,9 @@
 - name: Creating North Virginia Server Availability Zone B
   ec2_instance:
     name: "BZONE-NGINX-SERVER"
-    region: us-east-1
+    region: ap-southeast-1
     key_name: ansible-key
-    vpc_subnet_id: subnet-02a9fa16f77c25b47
+    vpc_subnet_id: subnet-46d63c0e
     instance_type: t2.micro
     security_group: nginx-secgroup
     aws_access_key: "{{ access_key }}"
@@ -40,7 +40,7 @@
     network:
       assign_public_ip: true
     user_data: "{{ lookup('file', 'user_datab.sh') }}"
-    image_id: ami-098f16afa9edf40be
+    image_id: ami-02b6d9703a69265e9
     tags:
       Environment: Nginx
   register: ec2_b
@@ -69,10 +69,10 @@
     aws_secret_key: "{{ secret_key }}"
     state: present
     security_group_names: lb-secgroup
-    region: us-east-1
+    region: ap-southeast-1
     zones:
-      - us-east-1a
-      - us-east-1b
+      - ap-southeast-1a
+      - ap-southeast-1b
     cross_az_load_balancing: "yes"
     listeners:
       - protocol: tcp
@@ -93,7 +93,7 @@
     aws_access_key: "{{ access_key }}"
     aws_secret_key: "{{ secret_key }}"
     ec2_elbs: nginx-load-balancer
-    region: us-east-1
+    region: ap-southeast-1
     instance_id: "{{ item.instance_id }}"
   with_items:
       - "{{ ec2_a.instances }}"
