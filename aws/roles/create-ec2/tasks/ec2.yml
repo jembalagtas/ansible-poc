@@ -4,7 +4,7 @@
     name: "AZONE-NGINX-SERVER"
     region: us-east-1
     key_name: ansible-key
-    vpc_subnet_id: subnet-b25b16ee
+    vpc_subnet_id: subnet-05fec8c549f16fc3e
     instance_type: t2.micro
     security_group: nginx-secgroup
     aws_access_key: "{{ access_key }}"
@@ -12,12 +12,12 @@
     volumes:
       - device_name: /dev/sda1
         ebs:
-          volume_size: 10
+          volume_size: 15
           delete_on_termination: true
     network:
       assign_public_ip: true
     user_data: "{{ lookup('file', 'user_dataa.sh') }}"
-    image_id: ami-0c322300a1dd5dc79
+    image_id: ami-098f16afa9edf40be
     tags:
       Environment: Nginx
   register: ec2_a
@@ -27,7 +27,7 @@
     name: "BZONE-NGINX-SERVER"
     region: us-east-1
     key_name: ansible-key
-    vpc_subnet_id: subnet-c92565ae
+    vpc_subnet_id: subnet-02a9fa16f77c25b47
     instance_type: t2.micro
     security_group: nginx-secgroup
     aws_access_key: "{{ access_key }}"
@@ -35,12 +35,12 @@
     volumes:
       - device_name: /dev/sda1
         ebs:
-          volume_size: 10
+          volume_size: 15
           delete_on_termination: true
     network:
       assign_public_ip: true
     user_data: "{{ lookup('file', 'user_datab.sh') }}"
-    image_id: ami-0c322300a1dd5dc79
+    image_id: ami-098f16afa9edf40be
     tags:
       Environment: Nginx
   register: ec2_b

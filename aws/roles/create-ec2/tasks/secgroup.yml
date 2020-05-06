@@ -12,7 +12,7 @@
   ec2_group:
     name: nginx-secgroup
     description: nginx az a & b security group
-    vpc_id: vpc-6d34a917
+    vpc_id: vpc-073e9667ae2a70de0
     region: us-east-1
     aws_access_key: "{{ access_key }}"
     aws_secret_key: "{{ secret_key }}"
@@ -34,7 +34,7 @@
   ec2_group:
     name: lb-secgroup
     description: nginx lb security group
-    vpc_id: vpc-6d34a917
+    vpc_id: vpc-073e9667ae2a70de0
     region: us-east-1
     aws_access_key: "{{ access_key }}"
     aws_secret_key: "{{ secret_key }}"
