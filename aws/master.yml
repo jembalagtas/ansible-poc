@@ -6,4 +6,5 @@
   become: true
   roles:
     - create-ec2
+    - create-sg
   
