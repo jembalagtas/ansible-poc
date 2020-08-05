@@ -5,6 +5,6 @@
   become_user: root
   become: true
   roles:
-    - create-ec2
     - create-sg
+    - create-ec2
   
